@@ -10,24 +10,15 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
-
-  // searchString = '';
   reactiveSearchString = new FormControl('');
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.reactiveSearchString.valueChanges.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      // ... switchMap(string => ...http.call(string...))
-    ).subscribe(console.log);
+    this.reactiveSearchString.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe(console.log);
   }
-
-  // findSomething(search: string) {
-  //   console.log(search)
-  // }
 }

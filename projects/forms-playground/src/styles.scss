@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/cdk/overlay-prebuilt.css';
+@import "@angular/cdk/overlay-prebuilt.css";
 
 :root {
   --color-primary: #004859;
@@ -19,12 +19,20 @@
   --font-size-h1: 34px;
 }
 
-body, html, p, h1, h2, h3, h4, h5, span {
+body,
+html,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+span {
   padding: 0;
   margin: 0;
 }
 body {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   background-color: var(--color-background);
 }
 
@@ -46,7 +54,10 @@ form {
   max-width: 450px;
 }
 
-label, input:not([type="checkbox"]), fieldset, button {
+label,
+input:not([type="checkbox"]),
+fieldset,
+button {
   width: 100%;
   box-sizing: border-box;
 }
@@ -83,7 +94,8 @@ button {
   }
 }
 
-input, select {
+input,
+select {
   border: var(--color-text) solid 2px;
 }
 
@@ -91,7 +103,9 @@ legend {
   font-weight: bold;
 }
 
-input, button, select {
+input,
+button,
+select {
   border-radius: 5px;
   font-size: 18px;
   padding: 10px 11px;
@@ -101,14 +115,17 @@ select {
   width: 100%;
 }
 
-.ng-valid.ng-dirty:not([formGroupName]):not([formArrayName]):not([ngModelGroup]):not(form):not(paper-textarea)
-{
+.ng-valid.ng-dirty:not([formGroupName]):not([formArrayName]):not(
+    [ngModelGroup]
+  ):not(form):not(paper-textarea) {
   border: 2px solid var(--color-success);
 }
-.ng-invalid.ng-dirty:not([ngModelGroup="address"]):not([formGroupName="address"]):not([formArrayName]):not(form) {
+
+.ng-invalid.ng-dirty:not([ngModelGroup="address"]):not(
+    [formGroupName="address"]
+  ):not([formArrayName]):not(form) {
   border: 2px solid var(--color-error);
 }
-
 
 button[disabled] {
   background-color: rgba(0, 0, 0, 0.15);
@@ -139,28 +156,29 @@ button[disabled] {
   @include input-message();
   color: var(--color-error);
 }
+
 .input-info {
   @include input-message();
-  color: var(--color-info)
+  color: var(--color-info);
 }
-.review-textarea {
-  border-radius: var(--border-radius);
-  background-color: white;
-  padding: calc(var(--spacing-step) * 2);
-  margin-top: var(--spacing-step);
-  min-height: 74px;
-  box-sizing: border-box;
-  h4 {
-    margin-bottom: var(--spacing-step);
-    &:empty:before {
-      content: attr(data-placeholder);
-      opacity: 0.6;
-    }
-  }
-  p, div {
-    &:empty:before {
-      content: attr(data-placeholder);
-      opacity: 0.6;
-    }
-  }
-}
+// .review-textarea {
+//   border-radius: var(--border-radius);
+//   background-color: white;
+//   padding: calc(var(--spacing-step) * 2);
+//   margin-top: var(--spacing-step);
+//   min-height: 74px;
+//   box-sizing: border-box;
+//   h4 {
+//     margin-bottom: var(--spacing-step);
+//     &:empty:before {
+//       content: attr(data-placeholder);
+//       opacity: 0.6;
+//     }
+//   }
+//   p, div {
+//     &:empty:before {
+//       content: attr(data-placeholder);
+//       opacity: 0.6;
+//     }
+//   }
+// }
