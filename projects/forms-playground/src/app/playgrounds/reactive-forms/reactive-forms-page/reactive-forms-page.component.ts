@@ -75,10 +75,11 @@ export class ReactiveFormsPageComponent implements OnInit, OnDestroy {
 
   form = this.fb.group({
     firstName: [
-      'Manohar',
+      '',
       [
         Validators.required,
-        Validators.minLength(2),
+        Validators.maxLength(25),
+        Validators.pattern(/^[a-zA-Z\s.'-]+$/),
         banWords(['test', 'dummy']),
       ],
       ,
@@ -100,7 +101,17 @@ export class ReactiveFormsPageComponent implements OnInit, OnDestroy {
       },
       ,
     ],
-    email: ['manohar@gmail.com', [Validators.email, Validators.required]],
+    email: [
+      'manohar@gmail.com',
+      [
+        Validators.email,
+        Validators.required,
+        // Validators.pattern(
+        //   /^(?!.*@.*@)(?!.*@-$)(?!.*-@)(?!.*\.\.)(?!.*\.\.)(?!.*\-\-)(?!.*\-\-)(?!.*\.-)(?!.*-\.)[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?@[a-z0-9.-]+\.[a-z]+$/
+        // ),
+        Validators.maxLength(50),
+      ],
+    ],
     yearOfBirth: this.fb.nonNullable.control(
       this.years[this.years.length - 1],
       Validators.required
@@ -162,6 +173,10 @@ export class ReactiveFormsPageComponent implements OnInit, OnDestroy {
         this.form.controls.passport.updateValueAndValidity();
       });
 
+    this.form.valueChanges.subscribe(() => {
+      console.log('form value changes');
+    });
+
     this.formPendingState = this.form.statusChanges
       .pipe(
         bufferCount(2, 1),
@@ -185,7 +200,7 @@ export class ReactiveFormsPageComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(e: Event) {
-    console.log(this.form.value);
+    console.log(this.form);
   }
 
   private getYears() {

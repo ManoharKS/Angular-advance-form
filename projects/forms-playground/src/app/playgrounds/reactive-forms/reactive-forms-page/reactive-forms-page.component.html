@@ -25,11 +25,16 @@
       </div>
       <div
         class="input-error"
-        *ngIf="firstName.dirty && firstName.hasError('minlength')"
+        *ngIf="firstName.dirty && firstName.hasError('maxlength')"
       >
-        The name must be at least
-        <strong>{{ firstName.getError("minlength").requiredLength }}</strong>
-        characters
+        maxlength exceeds
+      </div>
+
+      <div
+        class="input-error"
+        *ngIf="firstName.dirty && firstName.hasError('pattern')"
+      >
+        Not allowed
       </div>
     </ng-container>
   </div>
@@ -117,7 +122,10 @@
       </div>
       <div
         class="input-error"
-        *ngIf="email.dirty && email.hasError('minlength')"
+        *ngIf="
+          (email.dirty && email.hasError('minlength')) ||
+          email.hasError('pattern')
+        "
       >
         The email is not valid
       </div>
